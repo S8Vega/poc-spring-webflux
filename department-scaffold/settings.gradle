@@ -6,7 +6,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'employee-scaffold'
+rootProject.name = 'department-scaffold'
 
 include ':app-service'
 include ':model'
