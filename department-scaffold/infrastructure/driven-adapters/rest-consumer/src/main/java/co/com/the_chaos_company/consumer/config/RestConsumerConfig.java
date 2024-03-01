@@ -5,6 +5,7 @@ import io.netty.handler.timeout.WriteTimeoutHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.reactive.ClientHttpConnector;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -30,8 +31,8 @@ public class RestConsumerConfig {
     public WebClient getWebClient(WebClient.Builder builder) {
         return builder
                 .baseUrl(url)
-//            .defaultHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-//            .clientConnector(getClientHttpConnector())
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                .clientConnector(getClientHttpConnector())
                 .build();
     }
 
