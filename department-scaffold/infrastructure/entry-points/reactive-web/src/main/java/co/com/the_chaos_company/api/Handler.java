@@ -1,6 +1,5 @@
 package co.com.the_chaos_company.api;
 
-import co.com.the_chaos_company.model.department.Department;
 import co.com.the_chaos_company.usecase.department.DepartmentUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -33,11 +32,19 @@ public class Handler {
         return ServerResponse.ok().bodyValue("");
     }
 
-    // get by id
     public Mono<ServerResponse> getDepartmentById(ServerRequest serverRequest) {
         Integer id = Integer.parseInt(serverRequest.pathVariable("id"));
-        Mono<Department> response = departmentUseCase.getDepartmentById(id);
-        return response.flatMap(department -> ServerResponse.ok()
+        return departmentUseCase.getDepartmentById(id)
+                .flatMap(department -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(department))
+                .switchIfEmpty(ServerResponse.notFound().build());
+    }
+
+    public Mono<ServerResponse> getAllDepartments(ServerRequest serverRequest) {
+        return departmentUseCase.getAllDepartments()
+                .collectList()
+                .flatMap(department -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(department))
                 .switchIfEmpty(ServerResponse.notFound().build());

@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -61,5 +62,18 @@ public class RestConsumer implements DepartmentRepository {
                     return Mono.error(new RuntimeException(message));
                 })
                 .bodyToMono(Department.class);
+    }
+
+    @Override
+    @CircuitBreaker(name = "getAllDepartments")
+    public Flux<Department> getAllDepartments() {
+        return client.get()
+                .retrieve()
+                .onStatus(HttpStatusCode::isError, response -> {
+                    String message = "Error in request: " + response.statusCode();
+                    log.error(message);
+                    return Mono.error(new RuntimeException(message));
+                })
+                .bodyToFlux(Department.class);
     }
 }
