@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "f457d028-9dfe-4d27-9991-18b0689b87c7",
+		"name": "poc-spring-webflux",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11080405"
+	},
+	"item": [
+		{
+			"name": "client",
+			"item": [
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/employees/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "department-scaffold",
+			"item": [
+				{
+					"name": "api-colombia",
+					"item": [
+						{
+							"name": "find department",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api-colombia.com/api/v1/department/5",
+									"protocol": "https",
+									"host": [
+										"api-colombia",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"department",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get department by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/department/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"department",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/department",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"department"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/employees/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
